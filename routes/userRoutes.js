@@ -3,8 +3,8 @@ const router = express.Router();
 const { User } = require("../models");
 
 router.post("/", async (req, res) => {
-  const { firstname, lastname, email, password } = req.body;
-  await User.create({ firstname, lastname, email, password });
+  const { firstname, lastname, email, password, address, numberphone } = req.body;
+  await User.create({ firstname, lastname, email, password, address, numberphone });
   return res.send("El usuario fue creado con éxito!");
 });
 
