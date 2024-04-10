@@ -3,9 +3,8 @@ const { Sequelize } = require("sequelize");
 const User = require("./User");
 const Products = require("./Products"); 
 const Order = require("./Order");
+const User = require("./User")
 const Category = require("./Category");
-
-
 
 
 const sequelize = new Sequelize(
@@ -21,10 +20,10 @@ const sequelize = new Sequelize(
 );
 
 User.initModel(sequelize);
-Article.initModel(sequelize);
+Category.initModel(sequelize);
 
 User.hasMany(Article);
-Article.belongsTo(User);
+Category.belongsTo(User);
 
 module.exports = {
   sequelize,
