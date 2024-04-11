@@ -27,10 +27,10 @@ const AdminController = {
 
     const admin = await Admin.findByPk(id);
 
-    if (firstname) user.firstname = firstname;
-    if (lastname) user.lastname = lastname;
-    if (email) user.email = email;
-    if (password) user.password = password;
+    if (firstname) admin.firstname = firstname;
+    if (lastname) admin.lastname = lastname;
+    if (email) admin.email = email;
+    if (password) admin.password = password;
 
     await admin.save();
 

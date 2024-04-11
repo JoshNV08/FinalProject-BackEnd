@@ -21,7 +21,7 @@ const productController = {
       price,
       stock,
       category,
-      outstanding, 
+      outstanding,
     });
     return res.send("El producto existe!");
   },
