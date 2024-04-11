@@ -17,7 +17,7 @@ const categoryController = {
     await Category.create({
       firstname,
     });
-    return res.send("El usuario fue creado con éxito!");
+    return res.send("La categoría fue creada con éxito!");
   },
   update: async (req, res) => {
     const { id } = req.params;
@@ -29,7 +29,7 @@ const categoryController = {
 
     await category.save();
 
-    return res.send("Usuario modificado con éxito!");
+    return res.send("Categoría modificada con éxito!");
   },
   destroy: async (req, res) => {},
 };
