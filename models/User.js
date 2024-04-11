@@ -26,6 +26,21 @@ class User extends Model {
           type: DataTypes.STRING,
           allowNull: false,
         },
+        address: {
+          type: DataTypes.STRING,
+          allowNull: false,
+          unique: false,
+        },
+        phonenumber: {
+          type: DataTypes.STRING,
+          allowNull: false,
+          unique: true,
+        },
+        order: {
+          type: DataTypes.STRING,
+          allowNull: false,
+          unique: true,
+        },
       },
       {
         sequelize: sequelize,

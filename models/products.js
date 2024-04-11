@@ -9,25 +9,46 @@ class Products extends Model {
           primaryKey: true,
           autoIncrement: true,
         },
-        firstname: {
+        name: {
           type: DataTypes.STRING,
           allowNull: false,
         },
-        lastname: {
+        category: {
           type: DataTypes.STRING,
           allowNull: false,
         },
-        email: {
+        description: {
           type: DataTypes.STRING,
           allowNull: false,
           unique: true,
         },
-        password: {
+        name: {
           type: DataTypes.STRING,
           allowNull: false,
         },
+        photo: {
+          type: DataTypes.STRING,
+          allowNull: false,
+          unique: true,
+        },
+        price: {
+          type: DataTypes.BIGINT,
+          allowNull: false,
+          unique: true,
+        
       },
-      {
+      stock: {
+        type: DataTypes.BIGINT,
+        allowNull: false,
+        unique: true,
+      },
+      feature: {
+          type: DataTypes.BOOLEAN,
+          allowNull: false,
+          unique: true,
+        },
+      
+    
         sequelize,
         modelName: "products",
       }

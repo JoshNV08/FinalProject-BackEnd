@@ -9,11 +9,7 @@ class Order extends Model {
           primaryKey: true,
           autoIncrement: true,
         },
-        firstname: {
-          type: DataTypes.STRING,
-          allowNull: false,
-        },
-        lastname: {
+        status: {
           type: DataTypes.STRING,
           allowNull: false,
         },

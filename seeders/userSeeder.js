@@ -10,6 +10,7 @@ for (let i = 0; i < 20; i++) {
   const newUser = {
     firstname,
     lastname,
+    address,
     email: faker.internet.email({ firstName: firstname, lastName: lastname
     }), phoneNumber: faker.phone.number(),
     password: "123",
@@ -17,7 +18,7 @@ for (let i = 0; i < 20; i++) {
   users.push(newUser);
 }
 await User.bulkCreate(users);
-console.log("Se corrió el seeder de usuarios.")
+console.log("the seeders of users are running")
 }
 
 module.exports = userSeeder;
