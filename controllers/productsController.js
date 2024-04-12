@@ -2,42 +2,43 @@ const { Products } = require("../models");
 
 const productController = {
   index: async (req, res) => {
-    const productes = await Products.findAll();
-    return res.json(productes);
+    const products = await Products.findAll();
+    return res.json(products);
   },
   show: async (req, res) => {
     const { id } = req.params;
-    np;
     const products = await Products.findByPk(id);
     return res.json(products);
   },
   store: async (req, res) => {
-    const { name, description, photo, price, stock, category, outstanding } =
+    const { productName, description, photo, price, stock,productCategory, feature } =
       req.body;
     await Products.create({
-      name,
+      productName,
+      productCategory,
       description,
       photo,
       price,
       stock,
-      category,
-      outstanding,
+      feature,
+
     });
     return res.send("El producto existe!");
   },
   update: async (req, res) => {
     const { id } = req.params;
-    const { firstname, lastname, email, password, address, numberphone } =
+    const { productName, productCategory, description, photo, price, stock, feature } =
       req.body;
 
     const products = await Products.findByPk(id);
 
-    if (firstname) products.firstname = firstname;
-    if (lastname) products.lastname = lastname;
-    if (email) products.email = email;
-    if (password) products.password = password;
-    if (address) products.address = address;
-    if (numberphone) products.numberphone = numberphone;
+    if (productName) products.productName = productName;
+    if (productCategory) products.productCategory = productCategory;
+    if (description) products.description = description;
+    if (photo) products.photo = photo;
+    if (price) products.price = price;
+    if (stock) products.stock = stock;
+    if (feature) products.feature = feature;
 
     await products.save();
 
