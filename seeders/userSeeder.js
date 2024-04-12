@@ -10,7 +10,7 @@ for (let i = 0; i < 20; i++) {
   const newUser = {
     firstname,
     lastname,
-    address,
+    address: faker.location.city(),
     email: faker.internet.email({ firstName: firstname, lastName: lastname
     }), phoneNumber: faker.phone.number(),
     password: "123",

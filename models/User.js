@@ -31,12 +31,7 @@ class User extends Model {
           allowNull: false,
           unique: false,
         },
-        phonenumber: {
-          type: DataTypes.STRING,
-          allowNull: false,
-          unique: true,
-        },
-        order: {
+        phoneNumber: {
           type: DataTypes.STRING,
           allowNull: false,
           unique: true,

@@ -1,12 +1,12 @@
-const { Products } = require("../models");
+const { Products, Category } = require("../models");
 
 async function productsSeeder() {
   try {
     // Supongamos que tienes un método para obtener todas las categorías de tu base de datos
-    const categories = await Category.findAll();
+    const category = await Category.findAll();
 
     // Verifica si hay al menos una categoría en la base de datos
-    if (categories.length === 0) {
+    if (category.length === 0) {
       console.error("No hay categorías en la base de datos. Ejecuta el seeder de categorías primero.");
       return;
     }
@@ -15,7 +15,7 @@ async function productsSeeder() {
       {
         name: "Producto 1",
         description: "Descripción del producto 1",
-        category: categories[0].id, // Suponiendo que el primer elemento de la lista de categorías es la categoría que deseas asignar al producto
+        category: category[0].id, // Suponiendo que el primer elemento de la lista de categorías es la categoría que deseas asignar al producto
         photo: "url_de_la_imagen_del_producto_1",
         price: 1000,
         stock: 10,

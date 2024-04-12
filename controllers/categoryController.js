@@ -7,9 +7,10 @@ const categoryController = {
    },
    show: async (req, res) => {
      const { id } = req.params;
-     np;
-     const category = await Category.findByPk(id);
-     return res.json(category);
+     const categories = await Category.findByPk(id);
+
+     return res.json(categories);
+     
    },
 
    store: async (req, res) => {
@@ -29,9 +30,17 @@ const categoryController = {
 
      await category.save();
 
-     return res.send("Categoría modificada con éxito!");
+     return res.send("category");
    },
-   destroy: async (req, res) => {},
+   destroy: async (req, res) => {
+    const { id } = req.body
+    const categories = await Category.findByPk(id);
+
+  await Category.destroy()
+  console.log(categories)
+
+  return res.send("Category deleted")
+   },
  };
 
  module.exports = categoryController;
