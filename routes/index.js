@@ -3,6 +3,8 @@ const router = express.Router();
 const userRoutes = require("./userRoutes");
 const productsRoutes = require("./productsRoutes");
 const orderRoutes = require("./orderRoutes")
+const categoryRoutes = require('./categoryRoutes');
+
 
 
 router.use("/user", userRoutes);
