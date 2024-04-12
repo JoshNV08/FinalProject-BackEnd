@@ -13,19 +13,19 @@ const categoryController = {
    },
 
    store: async (req, res) => {
-     const { firstname } = req.body;
+     const { name } = req.body;
      await Category.create({
-       firstname,
+       name,
      });
      return res.send("La categoría fue creada con éxito!");
    },
    update: async (req, res) => {
      const { id } = req.params;
-     const { firstname } = req.body;
+     const { name } = req.body;
 
      const category = await Category.findByPk(id);
 
-     if (firstname) category.firstname = firstname;
+     if (name) category.name = name;
 
      await category.save();
 

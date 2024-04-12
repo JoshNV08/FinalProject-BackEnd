@@ -13,7 +13,7 @@ class Products extends Model {
           type: DataTypes.STRING,
           allowNull: false,
         },
-        productCategory: { // Cambia el nombre del atributo 'category' a 'productCategory'
+        productCategory: {
           type: DataTypes.STRING,
           allowNull: false,
         },
