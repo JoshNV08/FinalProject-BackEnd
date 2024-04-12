@@ -2,18 +2,18 @@ const { Model, DataTypes } = require("sequelize");
 
 class Products extends Model {
   static initModel(sequelize) {
-    Products.init(
+    return super.init(
       {
         id: {
-          type: DataTypes.BIGINT, // Notar que si bien esto en BD se guarda como BIGINT (8 bytes), Sequelize lo retorna como String, ya que JavaScript no lo puede representar.
+          type: DataTypes.BIGINT,
           primaryKey: true,
           autoIncrement: true,
         },
-        name: {
+        productName: {
           type: DataTypes.STRING,
           allowNull: false,
         },
-        category: {
+        productCategory: { // Cambia el nombre del atributo 'category' a 'productCategory'
           type: DataTypes.STRING,
           allowNull: false,
         },
@@ -21,10 +21,6 @@ class Products extends Model {
           type: DataTypes.STRING,
           allowNull: false,
           unique: true,
-        },
-        name: {
-          type: DataTypes.STRING,
-          allowNull: false,
         },
         photo: {
           type: DataTypes.STRING,
@@ -35,25 +31,22 @@ class Products extends Model {
           type: DataTypes.BIGINT,
           allowNull: false,
           unique: true,
-        
-      },
-      stock: {
-        type: DataTypes.BIGINT,
-        allowNull: false,
-        unique: true,
-      },
-      feature: {
-          type: DataTypes.BOOLEAN,
+        },
+        stock: {
+          type: DataTypes.BIGINT,
           allowNull: false,
           unique: true,
         },
-      
-    
+        feature: {
+          type: DataTypes.BOOLEAN,
+          allowNull: false,
+        },
+      },
+      {
         sequelize,
-        modelName: "products",
+        modelName: "Products",
       }
     );
-    return Products;
   }
 }
 

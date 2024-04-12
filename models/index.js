@@ -1,11 +1,4 @@
-const { Sequelize, Model, DataTypes } = require("sequelize");
-
-const User = require("./User");
-const Products = require("./Products");
-const Order = require("./Order");
-const Category = require("./Category");
-const Admin = require("./Admin");
-
+const Sequelize = require('sequelize');
 const sequelize = new Sequelize(
   process.env.DB_DATABASE,
   process.env.DB_USERNAME,
@@ -17,6 +10,12 @@ const sequelize = new Sequelize(
     logging: false,
   }
 );
+
+const User = require("./User");
+const Products = require("./Products");
+const Order = require("./Order");
+const Category = require("./Category");
+const Admin = require("./Admin");
 
 User.initModel(sequelize);
 Category.initModel(sequelize);
@@ -38,4 +37,3 @@ module.exports = {
   Products,
   Admin,
 };
-  
