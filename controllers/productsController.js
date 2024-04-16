@@ -44,7 +44,14 @@ const productController = {
 
     return res.send("Usuario modificado con éxito!");
   },
-  destroy: async (req, res) => {},
+  destroy: async (req, res) => {
+    const { id } = req.params;
+    const products = await Products.findByPk(id)
+
+    await products.destroy();
+
+    return res.send("Products sucesssfully deleted")
+  },
 };
 
 module.exports = productController;
