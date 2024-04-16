@@ -7,7 +7,6 @@ const userController = {
   },
   show: async (req, res) => {
     const { id } = req.params;
-    np;
     const user = await User.findByPk(id);
     return res.json(user);
   },
@@ -44,11 +43,11 @@ const userController = {
   },
   destroy: async (req, res) => {
     const { id } = req.params;
-    const user = await User.findByPk(id)
+    const user = await User.findByPk(id);
 
     await user.destroy();
 
-    return res.send("User deleted")
+    return res.send("User deleted");
   },
 };
 

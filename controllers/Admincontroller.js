@@ -7,7 +7,6 @@ const AdminController = {
   },
   show: async (req, res) => {
     const { id } = req.params;
-    np;
     const admin = await Admin.findByPk(id);
     return res.json(admin);
   },
