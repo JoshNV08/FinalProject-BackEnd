@@ -28,7 +28,7 @@ class Order extends Model {
         modelName: "order",
       }
     );
-    return Order
+    return Order;
   }
 }
 
