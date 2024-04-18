@@ -36,7 +36,7 @@ const categoryController = {
     const { id } = req.body
     const categories = await Category.findByPk(id);
 
-  await Category.destroy()
+  await Category.destroy    ()
   console.log(categories)
 
   return res.send("Category deleted")

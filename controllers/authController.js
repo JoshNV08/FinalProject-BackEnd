@@ -3,18 +3,17 @@ const { User } = require("../models");
 
 const authController = {
   getToken: async (req, res) => {
-    //const  { email, password } = req.body;
-    // Lo de arriba es equivalente a las dos líneas siguientes:
-    const email = req.body.email;
-    const password = req.body.password;
-
+    console.log("hola");
+    const { email, password } = req.body;
     const user = await User.findOne({ where: { email } });
-    
-    if (user === null) return res.json ({message: "Credenciales invalidas."});
 
-    //const token = jwt.sign({sub: "user123"}, "UnStringMuySecreto");
+    if (!user) return res.json({ message: "Credenciales invalidas." });
+    if (user.password !== password)
+      return res.json({ message: "Credenciales invalidas." });
 
-    return res.json("OK OK OK");
+    const token = jwt.sign({ sub: "user123" }, "UnStringMuySecreto");
+
+    return res.json(token);
   },
 };
 
