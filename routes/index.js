@@ -12,9 +12,6 @@ router.use("/products", productsRoutes);
 router.use("/order", orderRoutes);
 router.use("/category", categoryRoutes);
 router.use("/tokens", authRoutes);
-router.get("/test", checkJwt({ secret: "UnStringMuySecreto", algorithms: ["HS256"] }), (req, res) => {
-  return res.send("You have a token")
-})
 
 
 module.exports = router;

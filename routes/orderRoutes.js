@@ -4,13 +4,11 @@ const router = express.Router();
 const { Order } = require("../models/");
 const orderController = require("../controllers/orderController");
 
-router.get("/", orderController.index);
-router.get("/:id", orderController.show);
-router.post("/", orderController.store);
-router.patch("/:id", orderController.update);
-router.delete("/:id", orderController.destroy);
-router.get("/", checkJwt({ secret: "UnStringMuySecreto", algorithms: ["HS256"] }), (req, res) => {
-  return res.send("You have a token")
-})
+router.get("/",checkJwt({ secret: "UnStringMuySecreto", algorithms: ["HS256"] }),  orderController.index);
+router.get("/:id",checkJwt({ secret: "UnStringMuySecreto", algorithms: ["HS256"] }),  orderController.show);
+router.post("/", checkJwt({ secret: "UnStringMuySecreto", algorithms: ["HS256"] }),  orderController.store);
+router.patch("/:id", checkJwt({ secret: "UnStringMuySecreto", algorithms: ["HS256"] }),  orderController.update);
+router.delete("/:id",checkJwt({ secret: "UnStringMuySecreto", algorithms: ["HS256"] }), orderController.destroy);
+
 
 module.exports = router;
