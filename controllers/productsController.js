@@ -1,39 +1,38 @@
-const { Products } = require("../models");
+const { Product } = require("../models");
 
 const productController = {
   index: async (req, res) => {
-    const products = await Products.findAll();
+    const products = await Product.findAll();
     return res.json(products);
   },
   show: async (req, res) => {
     const { id } = req.params;
-    const products = await Products.findByPk(id);
-    return res.json(products);
+    const product = await Product.findByPk(id);
+    return res.json(product);
   },
   store: async (req, res) => {
-    const { productName, description, photo, price, stock,productCategory, feature } =
+    const { name, description, photo, price, stock, category, feature } =
       req.body;
-    await Products.create({
-      productName,
-      productCategory,
+    await Product.create({
+      name,
+      category,
       description,
       photo,
       price,
       stock,
       feature,
-
     });
     return res.send("El producto existe!");
   },
   update: async (req, res) => {
     const { id } = req.params;
-    const { productName, productCategory, description, photo, price, stock, feature } =
+    const { name, category, description, photo, price, stock, feature } =
       req.body;
 
-    const products = await Products.findByPk(id);
+    const products = await Product.findByPk(id);
 
-    if (productName) products.productName = productName;
-    if (productCategory) products.productCategory = productCategory;
+    if (name) products.productName = productName;
+    if (category) products.productCategory = productCategory;
     if (description) products.description = description;
     if (photo) products.photo = photo;
     if (price) products.price = price;
@@ -46,11 +45,11 @@ const productController = {
   },
   destroy: async (req, res) => {
     const { id } = req.params;
-    const products = await Products.findByPk(id)
+    const products = await Product.findByPk(id);
 
     await products.destroy();
 
-    return res.send("Products sucesssfully deleted")
+    return res.send("Products sucesssfully deleted");
   },
 };
 

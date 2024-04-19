@@ -12,7 +12,7 @@ const sequelize = new Sequelize(
 );
 
 const User = require("./User");
-const Products = require("./Products");
+const Products = require("./Product");
 const Order = require("./Order");
 const Category = require("./Category");
 const Admin = require("./Admin");

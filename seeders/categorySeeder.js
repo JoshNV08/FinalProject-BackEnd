@@ -5,6 +5,8 @@ async function categorySeeder() {
     {
       name: "Pizza",
     },
+    {name: "Jamon",}
+
   ];
   await Category.bulkCreate(category);
   console.log("the seeders of category are running");

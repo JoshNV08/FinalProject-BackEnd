@@ -1,6 +1,6 @@
 const { Model, DataTypes } = require("sequelize");
 
-class Products extends Model {
+class Product extends Model {
   static initModel(sequelize) {
     return super.init(
       {
@@ -9,11 +9,7 @@ class Products extends Model {
           primaryKey: true,
           autoIncrement: true,
         },
-        productName: {
-          type: DataTypes.STRING,
-          allowNull: false,
-        },
-        productCategory: {
+        name: {
           type: DataTypes.STRING,
           allowNull: false,
         },
@@ -44,10 +40,10 @@ class Products extends Model {
       },
       {
         sequelize,
-        modelName: "Products",
+        modelName: "product",
       }
     );
   }
 }
 
-module.exports = Products;
+module.exports = Product;
