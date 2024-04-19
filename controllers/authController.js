@@ -3,7 +3,6 @@ const { User } = require("../models");
 
 const authController = {
   getToken: async (req, res) => {
-    console.log("hola");
     const { email, password } = req.body;
     const user = await User.findOne({ where: { email } });
 
