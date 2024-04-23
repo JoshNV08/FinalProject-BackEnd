@@ -1,4 +1,5 @@
 const { Admin } = require("../models");
+const bcrypt = require("bcryptjs");
 
 const AdminController = {
   index: async (req, res) => {
@@ -11,6 +12,8 @@ const AdminController = {
     return res.json(admin);
   },
   store: async (req, res) => {
+    const hashedPassword = await bcrypt.hash(unhashedPassword, 10);
+
     const { firstname, lastname, email, password } = req.body;
     await Admin.create({
       firstname,
@@ -21,6 +24,8 @@ const AdminController = {
     return res.send("El administrador inició con éxito!");
   },
   update: async (req, res) => {
+    const hashedPassword = await bcrypt.hash(unhashedPassword, 10);
+
     const { id } = req.params;
     const { firstname, lastname, email, password } = req.body;
 

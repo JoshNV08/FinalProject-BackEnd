@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken");
+const bcrypt = require("bcryptjs");
 const { User } = require("../models");
 
 const authController = {
@@ -6,13 +7,18 @@ const authController = {
     const { email, password } = req.body;
     const user = await User.findOne({ where: { email } });
 
-    if (!user) return res.json({ message: "Credenciales invalidas." });
-    if (user.password !== password)
-      return res.json({ message: "Credenciales invalidas." });
+    if (!user) {
+      return res.json({ message: "Credenciales inválidas." });
+    }
+    const match = await bcrypt.compare(password, user.password);
 
-    const token = jwt.sign({ sub: "user123" }, "UnStringMuySecreto");
+    if (!match) {
+      return res.json({ message: "Credenciales inválidas." });
+    }
 
-    return res.json(token);
+    const token = jwt.sign({ sub: user.id }, "UnStringMuySecreto");
+
+    return res.json({ token });
   },
 };
 
