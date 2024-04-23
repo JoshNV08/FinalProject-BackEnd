@@ -1,8 +1,7 @@
-const { Products} = require("../models");
+const { Products } = require("../models");
 
 async function productsSeeder() {
   try {
-
     const products = [
       {
         name: "Producto 1",
@@ -13,11 +12,10 @@ async function productsSeeder() {
         stock: 10,
         feature: true,
       },
-
     ];
     await Products.bulkCreate(products);
 
-    console.log("Los seeders de productos se ejecutaron correctamente.");
+    console.log("the seeders of products are running");
   } catch (error) {
     console.error("Error al ejecutar el seeder de productos:", error);
   }
