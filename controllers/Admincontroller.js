@@ -12,7 +12,7 @@ const AdminController = {
     return res.json(admin);
   },
   store: async (req, res) => {
-    const hashedPassword = await bcrypt.hash(unhashedPassword, 10);
+    const hashedPassword = await bcrypt.hash(req.body.password, 10);
 
     const { firstname, lastname, email, password } = req.body;
     await Admin.create({

@@ -5,6 +5,7 @@ const productsSeeder = require("./productsSeeder");
 const adminSeeder = require("./adminSeeder")
 const orderSeeder = require("./orderSeeder")
 
+
 adminSeeder();
 userSeeder();
 categorySeeder();

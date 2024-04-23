@@ -13,7 +13,7 @@ const userController = {
   },
   store: async (req, res) => {
     const { firstname, lastname, email, password, address, numberphone } = req.body;
-    const hashedPassword = await bcrypt.hash(password, 10);
+    const hashedPassword = await bcrypt.hash(req.body.password , 10);
 
     await User.create({
       firstname,
