@@ -4,10 +4,10 @@ const bcrypt = require("bcryptjs")
 
 async function adminSeeder() {
 const admin = [];
+const hashedPassword = await bcrypt.hash("123" , 11);
 for (let i = 0; i < 20; i++) {
   const firstname = faker.person.firstName();
   const lastname = faker.person.lastName();
-  const hashedPassword = await bcrypt.hash("123" , 10);
   const newAdmin = {
     firstname,
     lastname,

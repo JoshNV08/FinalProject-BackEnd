@@ -2,12 +2,12 @@ const { Order } = require("../models");
 
 const orderController = {
   index: async (req, res) => {
-    const orders = await Order.findAll();
+    const orders = await Order.findAll({include: "user"});
     return res.json(orders);
   },
   show: async (req, res) => {
     const { id } = req.params;
-    const order = await Order.findByPk(id);
+    const order = await Order.findByPk(req.params.id);
     return res.json(order);
   },
   store: async (req, res) => {
