@@ -15,11 +15,10 @@ const authController = {
     if (!match) {
       return res.json({ message: "Credenciales inválidas." });
     }
-
-    const token = jwt.sign({ sub: user.id }, "UnStringMuySecreto");
-
-    return res.json({ token });
-  },
-};
-
+else {
+  const token = jwt.sign({ sub: user.id, role: "Admin" }, process.env.DB_TOKEN_SECRET);
+  return res.json({ token });
+}
+}
+}
 module.exports = authController;

@@ -7,16 +7,16 @@ const orderRoutes = require("./orderRoutes");
 const authRoutes = require("./authRoutes");
 const categoryRoutes = require("./categoryRoutes");
 const adminRoutes = require("./adminRoutes")
+const isAdmin = require ("../middleware/isAdmin")
 
 
 
-router.use("/admin", checkJwt({secret: process.env.SECRET_TOKEN, algorithms: ["HS256"], adminRoutes }));
-
+router.use("/tokens", authRoutes);
+router.use("/admin", adminRoutes);
 router.use("/user", userRoutes);
 router.use("/products", productsRoutes);
 router.use("/order", orderRoutes);
 router.use("/category", categoryRoutes);
-router.use("/tokens", authRoutes);
 
 
 
