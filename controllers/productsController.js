@@ -2,55 +2,85 @@ const { Product } = require("../models");
 
 const productController = {
   index: async (req, res) => {
-    const products = await Product.findAll();
-    return res.json(products);
+    try {
+      const products = await Product.findAll();
+      return res.json(products);
+    } catch(error) {
+      return res.status(500).json({ error: 'Error loading products' });
+    }
   },
   show: async (req, res) => {
-    const { id } = req.params;
-    const product = await Product.findByPk(id);
-    return res.json(product);
+    try {
+      const { id } = req.params;
+      const product = await Product.findByPk(id);
+      if (!product) {
+        return res.status(404).json({ error: "Product not found" });
+      }
+      return res.json(product);
+    } catch(error) {
+      return res.status(500).json({ error: "Error obtaining product" });
+    }
   },
   store: async (req, res) => {
-    const { name, description, photo, price, stock, category, feature } =
-      req.body;
-    await Product.create({
-      name,
-      category,
-      description,
-      photo,
-      price,
-      stock,
-      feature,
-    });
-    return res.send("El producto existe!");
+    try {
+      const { name, description, photo, price, stock, category, feature } = req.body;
+      await Product.create({
+        name,
+        category,
+        description,
+        photo,
+        price,
+        stock,
+        feature,
+      });
+      return res.send("Product created successfully!");
+    } catch(error) {
+      return res.status(500).json({ error: "Error creating product" });
+    }
   },
   update: async (req, res) => {
-    const { id } = req.params;
-    const { name, category, description, photo, price, stock, feature } =
-      req.body;
+    try {
+      const { id } = req.params;
+      const { name, category, description, photo, price, stock, feature } = req.body;
 
-    const products = await Product.findByPk(id);
+      const product = await Product.findByPk(id);
 
-    if (name) products.productName = productName;
-    if (category) products.productCategory = productCategory;
-    if (description) products.description = description;
-    if (photo) products.photo = photo;
-    if (price) products.price = price;
-    if (stock) products.stock = stock;
-    if (feature) products.feature = feature;
+      if (!product) {
+        return res.status(404).json({ error: "Product not found" });
+      }
 
-    await products.save();
+      if (name) product.name = name;
+      if (category) product.category = category;
+      if (description) product.description = description;
+      if (photo) product.photo = photo;
+      if (price) product.price = price;
+      if (stock) product.stock = stock;
+      if (feature) product.feature = feature;
 
-    return res.send("Usuario modificado con éxito!");
+      await product.save();
+
+      return res.send("Product updated successfully!");
+    } catch(error) {
+      return res.status(500).json({ error: "Error updating product" });
+    }
   },
   destroy: async (req, res) => {
-    const { id } = req.params;
-    const products = await Product.findByPk(id);
-
-    await products.destroy();
-
-    return res.send("Products sucesssfully deleted");
+    try {
+      const { id } = req.params;
+      const product = await Product.findOne({ where: { id } });
+  
+      if (!product) {
+        return res.status(404).json({ error: "Product not found" });
+      }
+  
+      await product.destroy();
+  
+      return res.send("Product successfully deleted");
+    } catch(error) {
+      return res.status(500).json({ error: "Error deleting product" });
+    }
   },
+  
 };
 
 module.exports = productController;

@@ -2,48 +2,78 @@ const { Order } = require("../models");
 
 const orderController = {
   index: async (req, res) => {
-    const orders = await Order.findAll({include: "user"});
-    return res.json(orders);
+    try {
+      const orders = await Order.findAll({ include: "user" });
+      return res.json(orders);
+    } catch (error) {
+      return res.status(500).json({ error: "Error al obtener las órdenes" });
+    }
   },
   show: async (req, res) => {
-    const { id } = req.params;
-    const order = await Order.findByPk(req.params.id);
-    return res.json(order);
+    try {
+      const { id } = req.params;
+      const order = await Order.findByPk(id);
+      if (!order) {
+        return res.status(404).json({ error: "Orden no encontrada" });
+      }
+      return res.json(order);
+    } catch (error) {
+      return res.status(500).json({ error: "Error al obtener la orden" });
+    }
   },
   store: async (req, res) => {
-    const { buyer, items, status, email, password } = req.body;
-    await Order.create({
-      buyer,
-      items,
-      status,
-      email,
-      password,
-    });
-    return res.send("Orden creada con éxito!");
+    try {
+      const { buyer, items, status, email, password } = req.body;
+      const order = await Order.create({
+        buyer,
+        items,
+        status,
+        email,
+        password,
+      });
+      return res.status(201).json(order);
+    } catch (error) {
+      return res.status(500).json({ error: "Error al crear la orden" });
+    }
   },
   update: async (req, res) => {
-    const { id } = req.params;
-    const { buyer, items, status, email, password } = req.body;
+    try {
+      const { id } = req.params;
+      const { buyer, items, status, email, password } = req.body;
 
-    const order = await Order.findByPk(id);
+      let order = await Order.findByPk(id);
+      if (!order) {
+        return res.status(404).json({ error: "Orden no encontrada" });
+      }
 
-    if (buyer) order.buyer = buyer;
-    if (items) order.items = items;
-    if (status) order.status = status;
-    if (email) order.email = email;
-    if (password) order.password = password;
+      order = await order.update({
+        buyer,
+        items,
+        status,
+        email,
+        password,
+      });
 
-    await order.save();
-
-    return res.send("Orden modificada con éxito!");
+      return res.json(order);
+    } catch (error) {
+      return res.status(500).json({ error: "Error al modificar la orden" });
+    }
   },
   destroy: async (req, res) => {
-    const { id } = req.params;
-    const order = await Order.findByPk(id);
+    try {
+      const { id } = req.params;
+      const deletedCount = await Order.destroy({
+        where: { id },
+      });
 
-    await order.destroy();
+      if (deletedCount === 0) {
+        return res.status(404).json({ error: "Orden no encontrada" });
+      }
 
-    return res.send("Orden eliminada con éxito!");
+      return res.send("Orden eliminada con éxito!");
+    } catch (error) {
+      return res.status(500).json({ error: "Error al eliminar la orden" });
+    }
   },
 };
 

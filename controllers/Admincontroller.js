@@ -3,44 +3,83 @@ const bcrypt = require("bcryptjs");
 
 const AdminController = {
   index: async (req, res) => {
-    const admins = await Admin.findAll();
-    return res.json(admins);
+    try {
+      const admins = await Admin.findAll();
+      return res.json(admins);
+    } catch(error) {
+      return res.status(500).json({ error: 'Error loading admins' });
+    }
   },
   show: async (req, res) => {
-    const { id } = req.params;
-    const admin = await Admin.findByPk(id);
-    return res.json(admin);
+    try {
+      const { id } = req.params;
+      const admin = await Admin.findByPk(id);
+      if (!admin) {
+        return res.status(404).json({ error: "Admin not found" });
+      }
+      return res.json(admin);
+    } catch(error) {
+      return res.status(500).json({ error: "Error obtaining admin" });
+    }
   },
   store: async (req, res) => {
-    const hashedPassword = await bcrypt.hash(req.body.password, 10);
+    try {
+      const { firstname, lastname, email, password } = req.body;
+      const hashedPassword = await bcrypt.hash(password, 10);
 
-    const { firstname, lastname, email, password } = req.body;
-    await Admin.create({
-      firstname,
-      lastname,
-      email,
-      password,
-    });
-    return res.send("El administrador inició con éxito!");
+      await Admin.create({
+        firstname,
+        lastname,
+        email,
+        password: hashedPassword,
+      });
+      return res.send("Admin created successfully!");
+    } catch(error) {
+      return res.status(500).json({ error: "Error creating admin" });
+    }
   },
   update: async (req, res) => {
-    const hashedPassword = await bcrypt.hash(unhashedPassword, 10);
+    try {
+      const { id } = req.params;
+      const { firstname, lastname, email, password } = req.body;
 
-    const { id } = req.params;
-    const { firstname, lastname, email, password } = req.body;
+      const admin = await Admin.findByPk(id);
 
-    const admin = await Admin.findByPk(id);
+      if (!admin) {
+        return res.status(404).json({ error: "Admin not found" });
+      }
 
-    if (firstname) admin.firstname = firstname;
-    if (lastname) admin.lastname = lastname;
-    if (email) admin.email = email;
-    if (password) admin.password = password;
+      if (firstname) admin.firstname = firstname;
+      if (lastname) admin.lastname = lastname;
+      if (email) admin.email = email;
+      if (password) {
+        const hashedPassword = await bcrypt.hash(password, 10);
+        admin.password = hashedPassword;
+      }
 
-    await admin.save();
+      await admin.save();
 
-    return res.send("Admin modificado con éxito!");
+      return res.send("Admin updated successfully!");
+    } catch(error) {
+      return res.status(500).json({ error: "Error updating admin" });
+    }
   },
-  destroy: async (req, res) => {},
+  destroy: async (req, res) => {
+    try {
+      const { id } = req.params;
+      const admin = await Admin.findOne({ where: { id } });
+
+      if (!admin) {
+        return res.status(404).json({ error: "Admin not found" });
+      }
+
+      await admin.destroy();
+
+      return res.send("Admin successfully deleted");
+    } catch(error) {
+      return res.status(500).json({ error: "Error deleting admin" });
+    }
+  },
 };
 
 module.exports = AdminController;

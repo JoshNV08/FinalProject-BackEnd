@@ -1,46 +1,75 @@
 const { Category } = require("../models");
 
 const categoryController = {
-   index: async (req, res) => {
-     const categories = await Category.findAll();
-     return res.json(categories);
-   },
-   show: async (req, res) => {
-     const { id } = req.params;
-     const categories = await Category.findByPk(id);
+  index: async (req, res) => {
+    try {
+      const categories = await Category.findAll();
+      return res.json(categories);
+    } catch(error) {
+      return res.status(500).json({ error: 'Error loading categories' });
+    }
+  },
+  show: async (req, res) => {
+    try {
+      const { id } = req.params;
+      const category = await Category.findByPk(id);
 
-     return res.json(categories);
-     
-   },
+      if (!category) {
+        return res.status(404).json({ error: "Category not found" });
+      }
 
-   store: async (req, res) => {
-     const { name } = req.body;
-     await Category.create({
-       name,
-     });
-     return res.send("La categoría fue creada con éxito!");
-   },
-   update: async (req, res) => {
-     const { id } = req.params;
-     const { name } = req.body;
+      return res.json(category);
+    } catch(error) {
+      return res.status(500).json({ error: "Error obtaining category" });
+    }
+  },
+  store: async (req, res) => {
+    try {
+      const { name } = req.body;
+      await Category.create({
+        name,
+      });
+      return res.send("Category created successfully!");
+    } catch(error) {
+      return res.status(500).json({ error: "Error creating category" });
+    }
+  },
+  update: async (req, res) => {
+    try {
+      const { id } = req.params;
+      const { name } = req.body;
 
-     const category = await Category.findByPk(id);
+      const category = await Category.findByPk(id);
 
-     if (name) category.name = name;
+      if (!category) {
+        return res.status(404).json({ error: "Category not found" });
+      }
 
-     await category.save();
+      if (name) category.name = name;
 
-     return res.send("category");
-   },
-   destroy: async (req, res) => {
-    const { id } = req.body
-    const categories = await Category.findByPk(id);
+      await category.save();
 
-  await Category.destroy    ()
-  console.log(categories)
+      return res.send("Category updated successfully!");
+    } catch(error) {
+      return res.status(500).json({ error: "Error updating category" });
+    }
+  },
+  destroy: async (req, res) => {
+    try {
+      const { id } = req.params;
+      const category = await Category.findOne({ where: { id } });
 
-  return res.send("Category deleted")
-   },
- };
+      if (!category) {
+        return res.status(404).json({ error: "Category not found" });
+      }
 
- module.exports = categoryController;
+      await category.destroy();
+
+      return res.send("Category successfully deleted");
+    } catch(error) {
+      return res.status(500).json({ error: "Error deleting category" });
+    }
+  },
+};
+
+module.exports = categoryController;
