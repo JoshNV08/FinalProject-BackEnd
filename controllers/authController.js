@@ -15,10 +15,16 @@ const authController = {
     if (!match) {
       return res.json({ message: "Credenciales inválidas." });
     }
-else {
-  const token = jwt.sign({ sub: user.id, role: "Admin" }, process.env.DB_TOKEN_SECRET);
-  return res.json({ token });
-}
-}
-}
+
+    if (user.role === "Admin") {
+      const token = jwt.sign(
+        { sub: user.id, role: "Admin" },
+        process.env.DB_TOKEN_SECRET
+      );
+      return res.json({ token });
+    } else {
+      return res.json({ message: "Credenciales inválidas." });
+    }
+  },
+};
 module.exports = authController;
