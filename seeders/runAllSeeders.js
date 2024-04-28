@@ -10,3 +10,4 @@ adminSeeder();
 userSeeder();
 categorySeeder();
 productsSeeder();
+orderSeeder();

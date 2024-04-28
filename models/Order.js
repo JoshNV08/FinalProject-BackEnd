@@ -13,12 +13,11 @@ class Order extends Model {
           type: DataTypes.STRING,
           allowNull: false,
         },
-        email: {
+        itemslist: {
           type: DataTypes.STRING,
           allowNull: false,
-          unique: true,
         },
-        password: {
+        address: {
           type: DataTypes.STRING,
           allowNull: false,
         },

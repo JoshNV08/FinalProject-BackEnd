@@ -4,13 +4,14 @@ async function seedOrders() {
     const orders = [];
     for (let i = 0; i < 19; i++) {
         const newOrder = {
-            items: 20,
+            itemslist: 20,
             status: 'pending',
+            address: "casita"
         };
         orders.push(newOrder);
     }
     await Order.bulkCreate(orders);
-    console.log('¡Se crearon las órdenes!');
+    console.log('the seeders of orders are running');
 }
 
 module.exports = seedOrders;
