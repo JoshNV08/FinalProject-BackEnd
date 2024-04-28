@@ -23,13 +23,11 @@ const orderController = {
   },
   store: async (req, res) => {
     try {
-      const { buyer, items, status, email, password } = req.body;
+      const {itemslist, status, address} = req.body;
       const order = await Order.create({
-        buyer,
-        items,
-        status,
-        email,
-        password,
+        itemslist,
+        address,
+        status
       });
       return res.status(201).json(order);
     } catch (error) {
@@ -39,7 +37,7 @@ const orderController = {
   update: async (req, res) => {
     try {
       const { id } = req.params;
-      const { buyer, items, status, email, password } = req.body;
+      const {itemslist, status, address} = req.body;
 
       let order = await Order.findByPk(id);
       if (!order) {
@@ -47,11 +45,9 @@ const orderController = {
       }
 
       order = await order.update({
-        buyer,
-        items,
-        status,
-        email,
-        password,
+        address,
+        itemslist,
+        status
       });
 
       return res.json(order);
