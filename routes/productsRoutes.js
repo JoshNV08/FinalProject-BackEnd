@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const { Product } = require("../models/");
 const productsController = require("../controllers/productsController");
 const {expressjwt: checkJwt} = require("express-jwt");
 

@@ -1,6 +1,6 @@
 const { Product } = require("../models");
 
-const productController = {
+const productsController = {
   index: async (req, res) => {
     try {
       const products = await Product.findAll();
@@ -83,4 +83,4 @@ const productController = {
   
 };
 
-module.exports = productController;
+module.exports = productsController;

@@ -15,7 +15,7 @@ class Category extends Model {
         },
       },
       {
-        sequelize, // Aquí es donde se pasa la instancia de Sequelize
+        sequelize,
         modelName: "category",
       }
     );
