@@ -1,4 +1,4 @@
-const { Products } = require("../models");
+const { Product } = require("../models");
 
 async function productsSeeder() {
   try {
@@ -13,7 +13,7 @@ async function productsSeeder() {
         feature: true,
       },
     ];
-    await Products.bulkCreate(products);
+    await Product.bulkCreate(products);
 
     console.log("the seeders of products are running");
   } catch (error) {
