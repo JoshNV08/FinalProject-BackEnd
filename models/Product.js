@@ -16,22 +16,22 @@ class Product extends Model {
         description: {
           type: DataTypes.STRING,
           allowNull: false,
-          unique: true,
+
         },
         photo: {
           type: DataTypes.STRING,
           allowNull: false,
-          unique: true,
+
         },
         price: {
           type: DataTypes.BIGINT,
           allowNull: false,
-          unique: true,
+
         },
         stock: {
           type: DataTypes.BIGINT,
           allowNull: false,
-          unique: true,
+
         },
         feature: {
           type: DataTypes.BOOLEAN,

@@ -24,7 +24,7 @@ const userController = {
   },
   store: async (req, res) => {
     try {
-      const { firstname, lastname, email, password, address, numberphone } =
+      const { firstname, lastname, email, password, address, phoneNumber } =
         req.body;
       const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -34,7 +34,7 @@ const userController = {
         email,
         password: hashedPassword,
         address,
-        numberphone,
+        phoneNumber,
       });
 
       return res.send("User created successfully!");
@@ -45,7 +45,7 @@ const userController = {
   update: async (req, res) => {
     try {
       const { id } = req.params;
-      const { firstname, lastname, email, password, address, numberphone } =
+      const { firstname, lastname, email, password, address, phoneNumber } =
         req.body;
       const user = await User.findByPk(id);
 
@@ -61,7 +61,7 @@ const userController = {
         user.password = hashedPassword;
       }
       if (address) user.address = address;
-      if (numberphone) user.numberphone = numberphone;
+      if (phoneNumber) user.phoneNumber = phoneNumber;
 
       await user.save();
 
