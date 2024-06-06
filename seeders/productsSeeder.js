@@ -102,8 +102,8 @@ const products = [
     feature: true,
   },
   {
-    name: "Cola Loca",
-    description: "Como la de tu jermu.",
+    name: "Doble Cola Cola",
+    description: "Contiene 15kilos de azúcar",
     categoryId: 3,
     photo: "https://goodburgeruy.s3.sa-east-1.amazonaws.com/Coca.webp",
     price: 1000,
@@ -112,7 +112,7 @@ const products = [
   },
   {
     name: "Zup",
-    description: "NO es 7up",
+    description: "Contiene 7up y sprite pero es Zup",
     categoryId: 3,
     photo: "https://goodburgeruy.s3.sa-east-1.amazonaws.com/Zup.webp",
     price: 1000,
@@ -121,7 +121,7 @@ const products = [
   },
   {
     name: "Moñster",
-    description: "Lo mismo pero mas barato.",
+    description: "Bebida energetica",
     categoryId: 3,
     photo: "https://goodburgeruy.s3.sa-east-1.amazonaws.com/Monster.webp",
     price: 1000,
@@ -130,7 +130,7 @@ const products = [
   },
   {
     name: "Agua",
-    description: "Como la que toma el bicho. SIUUUUU",
+    description: "Esta agua la toma Cristiano Ronaldo, es purificada.",
     categoryId: 3,
     photo: "https://goodburgeruy.s3.sa-east-1.amazonaws.com/Agua.webp",
     price: 1000,
@@ -139,7 +139,7 @@ const products = [
   },
   {
     name: "Rud Bell",
-    description: "No te da alas",
+    description: "Bebida energetica la cual no te provee alas",
     categoryId: 3,
     photo: "https://goodburgeruy.s3.sa-east-1.amazonaws.com/RedBull.webp",
     price: 1000,
@@ -148,7 +148,7 @@ const products = [
   },
   {
     name: "Nix",
-    description: "Es un elisir",
+    description: "Recomendada para fin de mes",
     categoryId: 3,
     photo: "https://goodburgeruy.s3.sa-east-1.amazonaws.com/Nix.webp",
     price: 1000,
@@ -214,15 +214,15 @@ const products = [
   },
   {
     name: "Café Expresso",
-    description: "El azucar no viene incluida.",
+    description: "Es expresso",
     categoryId: 5,
     photo: "https://goodburgeruy.s3.sa-east-1.amazonaws.com/CoffeeExpresso.webp",
     price: 1000,
     stock: 10,
     feature: true,
   },{
-    name: "Capuchino",
-    description: "Con leche, como te gusta.",
+    name: "Capuccino",
+    description: "Con leche",
     categoryId: 5,
     photo: "https://goodburgeruy.s3.sa-east-1.amazonaws.com/Cappuchino.webp",
     price: 1000,
@@ -230,7 +230,7 @@ const products = [
     feature: true,
   },{
     name: "Descafeinado",
-    description: "Tengo que decirlo?",
+    description: "No tiene café",
     categoryId: 5,
     photo: "https://goodburgeruy.s3.sa-east-1.amazonaws.com/Descafeinado.webp",
     price: 1000,
@@ -238,7 +238,7 @@ const products = [
     feature: true,
   },{
     name: "Expresso Doble",
-    description: "Fuerte como patada de Javi Mendez",
+    description: "Es doblemente expresso",
     categoryId: 5,
     photo: "https://goodburgeruy.s3.sa-east-1.amazonaws.com/ExpressoDoble.webp",
     price: 1000,
