@@ -130,7 +130,7 @@ const products = [
   },
   {
     name: "Agua",
-    description: "Esta agua la toma Cristiano Ronaldo, es purificada.",
+    description: "Esta agua la toma Cristiano Ronaldo.",
     categoryId: 3,
     photo: "https://goodburgeruy.s3.sa-east-1.amazonaws.com/Agua.webp",
     price: 70,
@@ -139,7 +139,7 @@ const products = [
   },
   {
     name: "Rud Bell",
-    description: "Bebida energetica la cual no te provee alas",
+    description: "Bebida energetica que no da alas",
     categoryId: 3,
     photo: "https://goodburgeruy.s3.sa-east-1.amazonaws.com/RedBull.webp",
     price: 41,
