@@ -26,7 +26,7 @@ const products = [
     photo: "https://goodburgeruy.s3.sa-east-1.amazonaws.com/BurgerPollo.webp",
     price: 1000,
     stock: 10,
-    feature: true,
+    feature: false,
   },
   {
     name: "Burger Random",
@@ -35,7 +35,7 @@ const products = [
     photo: "https://goodburgeruy.s3.sa-east-1.amazonaws.com/BurgerPepino.webp",
     price: 1000,
     stock: 10,
-    feature: true,
+    feature: false,
   },
   {
     name: "Egg Burger",
@@ -53,7 +53,7 @@ const products = [
     photo: "https://goodburgeruy.s3.sa-east-1.amazonaws.com/BurgerVeggie.webp",
     price: 1000,
     stock: 10,
-    feature: true,
+    feature: false,
   },
   {
     name: "Papas con Bacon",
@@ -80,7 +80,7 @@ const products = [
     photo: "https://goodburgeruy.s3.sa-east-1.amazonaws.com/PapasRusticas.webp",
     price: 1000,
     stock: 10,
-    feature: true,
+    feature: false,
   },
   {
     name: "Papas Especiales",
@@ -90,7 +90,7 @@ const products = [
       "https://goodburgeruy.s3.sa-east-1.amazonaws.com/PapasEspeciales.webp",
     price: 1000,
     stock: 10,
-    feature: true,
+    feature: false,
   },
   {
     name: "Ensalada",
@@ -99,7 +99,7 @@ const products = [
     photo: "https://goodburgeruy.s3.sa-east-1.amazonaws.com/Ensalada.webp",
     price: 1000,
     stock: 10,
-    feature: true,
+    feature: false,
   },
   {
     name: "Doble Cola Cola",
@@ -126,7 +126,7 @@ const products = [
     photo: "https://goodburgeruy.s3.sa-east-1.amazonaws.com/Monster.webp",
     price: 1000,
     stock: 10,
-    feature: true,
+    feature: false,
   },
   {
     name: "Agua",
@@ -135,7 +135,7 @@ const products = [
     photo: "https://goodburgeruy.s3.sa-east-1.amazonaws.com/Agua.webp",
     price: 1000,
     stock: 10,
-    feature: true,
+    feature: false,
   },
   {
     name: "Rud Bell",
@@ -171,7 +171,7 @@ const products = [
     photo: "https://goodburgeruy.s3.sa-east-1.amazonaws.com/HeladoGrande.webp",
     price: 1000,
     stock: 10,
-    feature: true,
+    feature: false,
   },
   {
     name: "Flan",
@@ -180,7 +180,7 @@ const products = [
     photo: "https://goodburgeruy.s3.sa-east-1.amazonaws.com/Flan.webp",
     price: 1000,
     stock: 10,
-    feature: true,
+    feature: false,
   },
   {
     name: "MilkShake Frutilla",
@@ -190,7 +190,7 @@ const products = [
       "https://goodburgeruy.s3.sa-east-1.amazonaws.com/MilkshakeFrutilla.webp",
     price: 1000,
     stock: 10,
-    feature: true,
+    feature: false,
   },
   {
     name: "MilkShake Vainilla",
@@ -200,7 +200,7 @@ const products = [
       "https://goodburgeruy.s3.sa-east-1.amazonaws.com/MilkshakeVainilla.webp",
     price: 1000,
     stock: 10,
-    feature: true,
+    feature: false,
   },
   {
     name: "MilkShake Chocolate",
@@ -235,7 +235,7 @@ const products = [
     photo: "https://goodburgeruy.s3.sa-east-1.amazonaws.com/Descafeinado.webp",
     price: 1000,
     stock: 10,
-    feature: true,
+    feature: false,
   },{
     name: "Expresso Doble",
     description: "Es doblemente expresso",
@@ -243,7 +243,7 @@ const products = [
     photo: "https://goodburgeruy.s3.sa-east-1.amazonaws.com/ExpressoDoble.webp",
     price: 1000,
     stock: 10,
-    feature: true,
+    feature: false,
   },
 ];
 

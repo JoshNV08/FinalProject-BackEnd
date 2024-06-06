@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const { Product } = require("../models/");
 const productsController = require("../controllers/productsController");
 const { expressjwt: checkJwt } = require("express-jwt");
 
 router.get("/", productsController.index);
+router.get("/featured", productsController.featured);
 router.get("/:id", productsController.show);
 router.post(
   "/",

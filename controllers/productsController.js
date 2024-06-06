@@ -80,6 +80,14 @@ const productsController = {
       return res.status(500).json({ error: "Error deleting product" });
     }
   },
+  featured: async (req, res) => {
+    try {
+      const featuredProducts = await Product.findAll({ where: { feature: true } });
+      return res.json(featuredProducts);
+    } catch (error) {
+      return res.status(500).json({ error: 'Error loading featured products' });
+    }
+  },
   
 };
 
