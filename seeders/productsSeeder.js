@@ -1,25 +1,26 @@
 const products = [
   {
+    id: 1,
     name: "Burger Sencilla",
     description: "Pan, carne y lechuga.",
     categoryId: 1,
-    photo:
-      "https://goodburgeruy.s3.sa-east-1.amazonaws.com/BurgerSencilla.webp",
+    photo: "https://goodburgeruy.s3.sa-east-1.amazonaws.com/BurgerSencilla.webp",
     price: 400,
     stock: 10,
     feature: true,
   },
   {
+    id: 2,
     name: "Burger Doble",
     description: "Pan, carne x2, tomate y lechuga.",
     categoryId: 1,
-    photo:
-      "https://goodburgeruy.s3.sa-east-1.amazonaws.com/BurgerDobleEspecial.webp",
+    photo: "https://goodburgeruy.s3.sa-east-1.amazonaws.com/BurgerDobleEspecial.webp",
     price: 600,
     stock: 10,
     feature: true,
   },
   {
+    id: 3,
     name: "Burger Pollo",
     description: "Pollo, lechuga y tomate.",
     categoryId: 1,
@@ -29,6 +30,7 @@ const products = [
     feature: false,
   },
   {
+    id: 4,
     name: "Burger Random",
     description: "Carne, pepino, y tomate.",
     categoryId: 1,
@@ -38,6 +40,7 @@ const products = [
     feature: false,
   },
   {
+    id: 5,
     name: "Egg Burger",
     description: "Como la de Mcdonalds pero mejor.",
     categoryId: 1,
@@ -47,6 +50,7 @@ const products = [
     feature: true,
   },
   {
+    id: 6,
     name: "Burger Veggie",
     description: "Hamburguesa vegetariana.",
     categoryId: 1,
@@ -56,6 +60,7 @@ const products = [
     feature: false,
   },
   {
+    id: 7,
     name: "Papas con Bacon",
     description: "Papas fritas con bacon.",
     categoryId: 2,
@@ -65,6 +70,7 @@ const products = [
     feature: true,
   },
   {
+    id: 8,
     name: "Papas Comunes",
     description: "Papas fritas comunes.",
     categoryId: 2,
@@ -74,6 +80,7 @@ const products = [
     feature: false,
   },
   {
+    id: 9,
     name: "Papas Rusticas",
     description: "Papas fritas rústicas.",
     categoryId: 2,
@@ -83,16 +90,17 @@ const products = [
     feature: false,
   },
   {
+    id: 10,
     name: "Papas Especiales",
     description: "Papas fritas especiales.",
     categoryId: 2,
-    photo:
-      "https://goodburgeruy.s3.sa-east-1.amazonaws.com/PapasEspeciales.webp",
+    photo: "https://goodburgeruy.s3.sa-east-1.amazonaws.com/PapasEspeciales.webp",
     price: 300,
     stock: 10,
     feature: false,
   },
   {
+    id: 11,
     name: "Ensalada",
     description: "Ensalada fresca.",
     categoryId: 2,
@@ -102,6 +110,7 @@ const products = [
     feature: false,
   },
   {
+    id: 12,
     name: "Doble Cola Cola",
     description: "Contiene 15kilos de azúcar",
     categoryId: 3,
@@ -111,6 +120,7 @@ const products = [
     feature: false,
   },
   {
+    id: 13,
     name: "Zup",
     description: "Contiene 7up y sprite pero es Zup",
     categoryId: 3,
@@ -120,6 +130,7 @@ const products = [
     feature: true,
   },
   {
+    id: 14,
     name: "Moñster",
     description: "Bebida energetica",
     categoryId: 3,
@@ -129,6 +140,7 @@ const products = [
     feature: false,
   },
   {
+    id: 15,
     name: "Agua",
     description: "Esta agua la toma Cristiano Ronaldo.",
     categoryId: 3,
@@ -138,6 +150,7 @@ const products = [
     feature: false,
   },
   {
+    id: 16,
     name: "Rud Bell",
     description: "Bebida energetica que no da alas",
     categoryId: 3,
@@ -147,6 +160,7 @@ const products = [
     feature: false,
   },
   {
+    id: 17,
     name: "Nix",
     description: "Recomendada para fin de mes",
     categoryId: 3,
@@ -156,6 +170,7 @@ const products = [
     feature: false,
   },
   {
+    id: 18,
     name: "Helado Seba",
     description: "Es un cono",
     categoryId: 4,
@@ -165,6 +180,7 @@ const products = [
     feature: true,
   },
   {
+    id: 19,
     name: "Helado Grande",
     description: "Helado grande.",
     categoryId: 4,
@@ -174,6 +190,7 @@ const products = [
     feature: false,
   },
   {
+    id: 20,
     name: "Flan",
     description: "Flan con caramelo.",
     categoryId: 4,
@@ -183,36 +200,37 @@ const products = [
     feature: false,
   },
   {
+    id: 21,
     name: "MilkShake Frutilla",
     description: "Milkshake de frutilla.",
     categoryId: 4,
-    photo:
-      "https://goodburgeruy.s3.sa-east-1.amazonaws.com/MilkshakeFrutilla.webp",
+    photo: "https://goodburgeruy.s3.sa-east-1.amazonaws.com/MilkshakeFrutilla.webp",
     price: 350,
     stock: 10,
     feature: false,
   },
   {
+    id: 22,
     name: "MilkShake Vainilla",
     description: "Milkshake de vainilla.",
     categoryId: 4,
-    photo:
-      "https://goodburgeruy.s3.sa-east-1.amazonaws.com/MilkshakeVainilla.webp",
+    photo: "https://goodburgeruy.s3.sa-east-1.amazonaws.com/MilkshakeVainilla.webp",
     price: 345,
     stock: 10,
     feature: false,
   },
   {
+    id: 23,
     name: "MilkShake Chocolate",
     description: "Milkshake de chocolate.",
     categoryId: 4,
-    photo:
-      "https://goodburgeruy.s3.sa-east-1.amazonaws.com/MilkshakeChocolate.webp",
+    photo: "https://goodburgeruy.s3.sa-east-1.amazonaws.com/MilkshakeChocolate.webp",
     price: 250,
     stock: 10,
     feature: false,
   },
   {
+    id: 24,
     name: "Café Expresso",
     description: "Es expresso",
     categoryId: 5,
@@ -220,7 +238,9 @@ const products = [
     price: 145,
     stock: 10,
     feature: false,
-  },{
+  },
+  {
+    id: 25,
     name: "Capuccino",
     description: "Con leche",
     categoryId: 5,
@@ -228,7 +248,9 @@ const products = [
     price: 165,
     stock: 10,
     feature: false,
-  },{
+  },
+  {
+    id: 26,
     name: "Descafeinado",
     description: "No tiene café",
     categoryId: 5,
@@ -236,7 +258,9 @@ const products = [
     price: 160,
     stock: 10,
     feature: false,
-  },{
+  },
+  {
+    id: 27,
     name: "Expresso Doble",
     description: "Es doblemente expresso",
     categoryId: 5,
