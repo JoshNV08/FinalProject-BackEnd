@@ -31,7 +31,7 @@ const products = [
   },
   {
     id: 4,
-    name: "Burger Randomm",
+    name: "Burger Random",
     description: "Carne, pepino, y tomate.",
     categoryId: 1,
     photo: "https://goodburgeruy.s3.sa-east-1.amazonaws.com/BurgerPepino.webp",
