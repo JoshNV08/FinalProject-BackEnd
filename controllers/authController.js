@@ -11,27 +11,27 @@ const authController = {
 
       if (!user) {
         const admin = await Admin.findOne({ where: { email } });
-        if(admin){
-          if(await bcrypt.compare(password, admin.password)){
+        if (admin) {
+          if (await bcrypt.compare(password, admin.password)) {
             const token = jwt.sign(
               { sub: admin.id, role: "Admin" },
               process.env.DB_TOKEN_SECRET
             );
             return res.json({ token });
-          }else{
+          } else {
             return res.status(401).json({ error: "Credenciales inválidas." });
           }
-        }else{
+        } else {
           return res.status(401).json({ error: "Problemas con el usuario." });
         }
-      }else{
-        if (await bcrypt.compare(password, user.password)){
+      } else {
+        if (await bcrypt.compare(password, user.password)) {
           const token = jwt.sign(
             { sub: user.id, role: "User" },
             process.env.DB_TOKEN_SECRET
           );
           return res.json({ token });
-        }else{
+        } else {
           return res.status(401).json({ error: "Credenciales inválidas." });
         }
       }
