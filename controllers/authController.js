@@ -17,7 +17,7 @@ const authController = {
               { sub: admin.id, role: "Admin" },
               process.env.DB_TOKEN_SECRET
             );
-            return res.json({ token });
+            return res.json({token});
           } else {
             return res.status(401).json({ error: "Credenciales inválidas." });
           }
