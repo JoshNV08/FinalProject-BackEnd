@@ -4,10 +4,13 @@ const express = require("express");
 const app = express();
 const routes = require("./routes");
 const port = process.env.APP_PORT || 3000;
+const adminRoutes = require("./routes/adminRoutes")
 
 app.use(cors());
 app.use(express.json());
 app.use(routes);
+app.use("/api", routes);
+app.use("/api/admin", adminRoutes);
 
 app.listen(port, () =>
   console.log(
