@@ -10,6 +10,7 @@ const userController = {
       return res.status(400).json({ error: "Error loading users" });
     }
   },
+  
   show: async (req, res) => {
     try {
       const { id } = req.params;
@@ -22,10 +23,10 @@ const userController = {
       return res.status(500).json({ error: "Error obtaining user" });
     }
   },
+  
   store: async (req, res) => {
     try {
-      const { firstname, lastname, email, password, address, phoneNumber } =
-        req.body;
+      const { firstname, lastname, email, password, address, phoneNumber } = req.body;
       const hashedPassword = await bcrypt.hash(password, 10);
 
       await User.create({
@@ -42,11 +43,11 @@ const userController = {
       return res.status(500).json({ error: "Error creating user" });
     }
   },
+  
   update: async (req, res) => {
     try {
       const { id } = req.params;
-      const { firstname, lastname, email, password, address, phoneNumber } =
-        req.body;
+      const { firstname, lastname, email, password, address, phoneNumber } = req.body;
       const user = await User.findByPk(id);
 
       if (!user) {
@@ -70,10 +71,11 @@ const userController = {
       return res.status(500).json({ error: "Error updating user" });
     }
   },
+  
   destroy: async (req, res) => {
     try {
       const { id } = req.params;
-      const user = await User.findOne({ where: { id } });
+      const user = await User.findByPk(id);
 
       if (!user) {
         return res.status(404).json({ error: "User not found" });
@@ -85,6 +87,36 @@ const userController = {
       return res.status(500).json({ error: "Error deleting user" });
     }
   },
+
+  getUser: async (req, res) => {
+    try {
+      const { id } = req.params;
+      const user = await User.findByPk(id);
+      if (!user) {
+        return res.status(404).json({ error: "User not found" });
+      }
+      return res.json(user);
+    } catch (error) {
+      return res.status(500).json({ error: "Error obtaining user" });
+    }
+  },
+  
+  updateUser: async (req, res) => {
+    try {
+      const { id } = req.params;
+      const { firstname, lastname, email } = req.body;
+      const user = await User.findByPk(id);
+     
+      if (firstname) user.firstname = firstname;
+      if (lastname) user.lastname = lastname;
+      if (email) user.email = email;
+
+      await user.save();
+      return res.json({ message: "User updated successfully" });
+    } catch (error) {
+      return res.status(500).json({ error: "Error updating user" });
+    }
+  }
 };
 
 module.exports = userController;
