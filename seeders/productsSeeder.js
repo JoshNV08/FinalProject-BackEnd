@@ -4,7 +4,8 @@ const products = [
     name: "Simple Burger",
     description: "Bun, meat, and lettuce.",
     categoryId: 1,
-    photo: "https://goodburgeruy.s3.sa-east-1.amazonaws.com/BurgerSencilla.webp",
+    photo:
+      "https://goodburgeruy.s3.sa-east-1.amazonaws.com/BurgerSencilla.webp",
     price: 400,
     stock: 10,
     feature: true,
@@ -14,7 +15,8 @@ const products = [
     name: "Double Burger",
     description: "Bun, meat x2, tomato, and lettuce.",
     categoryId: 1,
-    photo: "https://goodburgeruy.s3.sa-east-1.amazonaws.com/BurgerDobleEspecial.webp",
+    photo:
+      "https://goodburgeruy.s3.sa-east-1.amazonaws.com/BurgerDobleEspecial.webp",
     price: 600,
     stock: 10,
     feature: true,
@@ -94,7 +96,8 @@ const products = [
     name: "Special Fries",
     description: "Special French fries.",
     categoryId: 2,
-    photo: "https://goodburgeruy.s3.sa-east-1.amazonaws.com/PapasEspeciales.webp",
+    photo:
+      "https://goodburgeruy.s3.sa-east-1.amazonaws.com/PapasEspeciales.webp",
     price: 300,
     stock: 10,
     feature: false,
@@ -204,7 +207,8 @@ const products = [
     name: "Strawberry Milkshake",
     description: "Strawberry milkshake.",
     categoryId: 4,
-    photo: "https://goodburgeruy.s3.sa-east-1.amazonaws.com/MilkshakeFrutilla.webp",
+    photo:
+      "https://goodburgeruy.s3.sa-east-1.amazonaws.com/MilkshakeFrutilla.webp",
     price: 350,
     stock: 10,
     feature: false,
@@ -214,7 +218,8 @@ const products = [
     name: "Vanilla Milkshake",
     description: "Vanilla milkshake.",
     categoryId: 4,
-    photo: "https://goodburgeruy.s3.sa-east-1.amazonaws.com/MilkshakeVainilla.webp",
+    photo:
+      "https://goodburgeruy.s3.sa-east-1.amazonaws.com/MilkshakeVainilla.webp",
     price: 345,
     stock: 10,
     feature: false,
@@ -224,7 +229,8 @@ const products = [
     name: "Chocolate Milkshake",
     description: "Chocolate milkshake.",
     categoryId: 4,
-    photo: "https://goodburgeruy.s3.sa-east-1.amazonaws.com/MilkshakeChocolate.webp",
+    photo:
+      "https://goodburgeruy.s3.sa-east-1.amazonaws.com/MilkshakeChocolate.webp",
     price: 250,
     stock: 10,
     feature: false,
@@ -234,7 +240,8 @@ const products = [
     name: "Espresso Coffee",
     description: "It's espresso.",
     categoryId: 5,
-    photo: "https://goodburgeruy.s3.sa-east-1.amazonaws.com/CoffeeExpresso.webp",
+    photo:
+      "https://goodburgeruy.s3.sa-east-1.amazonaws.com/CoffeeExpresso.webp",
     price: 145,
     stock: 10,
     feature: false,
