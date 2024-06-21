@@ -7,6 +7,10 @@ const userController = require("../controllers/userController");
 
 router.post("/",  userController.store);
 
+router.get("/users", checkJwt({ secret: "UnStringMuySecreto", algorithms: ["HS256"] }), userController.index );
+router.get("/users/:id", checkJwt({ secret: "UnStringMuySecreto", algorithms: ["HS256"] }), userController.getUser);
+router.put("/users/:id", checkJwt({ secret: "UnStringMuySecreto", algorithms: ["HS256"] }), userController.updateUser);
+
 router.use(checkJwt({secret: process.env.SECRET_TOKEN, algorithms: ["HS256"] }));
 
 router.get("/",userController.index);
