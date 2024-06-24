@@ -1,22 +1,20 @@
-const {expressjwt: checkJwt} = require("express-jwt")
+const { expressjwt: checkJwt } = require("express-jwt");
 const express = require("express");
 const router = express.Router();
-const { User } = require("../models");
 const userController = require("../controllers/userController");
 
+const jwtMiddleware = checkJwt({
+  secret: process.env.SECRET_TOKEN || "UnStringMuySecreto",
+  algorithms: ["HS256"],
+});
 
-router.post("/",  userController.store);
+// Rutas protegidas con JWT
+router.get("/users", jwtMiddleware, userController.index);
+router.get("/users/:id", jwtMiddleware, userController.show);
+router.put("/users/:id", jwtMiddleware, userController.update);
+router.delete("/users/:id", jwtMiddleware, userController.destroy);
 
-router.get("/users", checkJwt({ secret: "UnStringMuySecreto", algorithms: ["HS256"] }), userController.index );
-router.get("/users/:id", checkJwt({ secret: "UnStringMuySecreto", algorithms: ["HS256"] }), userController.getUser);
-router.put("/users/:id", checkJwt({ secret: "UnStringMuySecreto", algorithms: ["HS256"] }), userController.updateUser);
-
-router.use(checkJwt({secret: process.env.SECRET_TOKEN, algorithms: ["HS256"] }));
-
-router.get("/",userController.index);
-router.get("/:id", userController.show);
-router.patch("/:id",  userController.update);
-router.delete("/:id",userController.destroy);
-
+// Rutas públicas
+router.post("/users", userController.store);
 
 module.exports = router;

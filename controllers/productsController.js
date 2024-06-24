@@ -88,7 +88,6 @@ const productsController = {
       return res.status(500).json({ error: 'Error loading featured products' });
     }
   },
-  
 };
 
 module.exports = productsController;
