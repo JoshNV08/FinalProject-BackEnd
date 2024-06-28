@@ -13,6 +13,8 @@ router.get("/users", jwtMiddleware, userController.index);
 router.get("/users/:id", jwtMiddleware, userController.show);
 router.put("/users/:id", jwtMiddleware, userController.update);
 router.delete("/users/:id", jwtMiddleware, userController.destroy);
+router.put("/user/profile/:id", jwtMiddleware, userController.updateProfile);
+router.get("/user/profile/:id", jwtMiddleware, userController.getProfile);
 
 // Rutas públicas
 router.post("/users", userController.store);
