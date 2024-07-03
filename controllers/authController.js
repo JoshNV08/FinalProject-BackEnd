@@ -30,7 +30,7 @@ const authController = {
             { sub: user.id, role: "User" },
             process.env.DB_TOKEN_SECRET
           );
-          return res.json({ token });
+          return res.json({ id: user.id, firstname: user.firstname, token });
         } else {
           return res.status(401).json({ error: "Credenciales inválidas." });
         }
