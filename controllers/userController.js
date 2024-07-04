@@ -89,22 +89,24 @@ const userController = {
       return res.status(500).json({ error: "Error deleting user" });
     }
   },
-  getProfile:  async (req, res) => {
+  getProfile: async (req, res) => {
     try {
-      const user = await User.findByPk(req.user.id);
+      const { id } = req.params;
+      const user = await User.findByPk(id);
       if (!user) {
         return res.status(404).json({ error: "User not found" });
       }
       return res.json(user);
     } catch (error) {
-      return res.status(500).json({ error: "Error obtaining profile" });
+      return res.status(500).json({ error: "Error obtaining user" });
     }
   },
 
   updateProfile: async (req, res) => {
     try {
-      const { firstname, lastname, email, currentPassword, newPassword } = req.body;
-      const user = await User.findByPk(req.user.id)
+      const { id } = req.auth;
+      const { firstname, lastname, email, currentPassword, newPassword, address, phoneNumber } = req.body;
+      const user = await User.findByPk(id);
 
       if (!user) {
         return res.status(404).json({ error: "User not found" });
@@ -113,6 +115,8 @@ const userController = {
       if (firstname) user.firstname = firstname;
       if (lastname) user.lastname = lastname;
       if (email) user.email = email;
+      if (address) user.address = address;
+      if (phoneNumber) user.phoneNumber = phoneNumber;
 
       if (currentPassword && newPassword) {
         const isPasswordValid = await bcrypt.compare(currentPassword, user.password);
@@ -127,8 +131,6 @@ const userController = {
     } catch (error) {
       return res.status(500).json({ error: "Error updating profile" });
     }
-  },
+  }};
 
-};
- 
 module.exports = userController;
