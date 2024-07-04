@@ -89,6 +89,45 @@ const userController = {
       return res.status(500).json({ error: "Error deleting user" });
     }
   },
+  getProfile:  async (req, res) => {
+    try {
+      const user = await User.findByPk(req.user.id);
+      if (!user) {
+        return res.status(404).json({ error: "User not found" });
+      }
+      return res.json(user);
+    } catch (error) {
+      return res.status(500).json({ error: "Error obtaining profile" });
+    }
+  },
+
+  updateProfile: async (req, res) => {
+    try {
+      const { firstname, lastname, email, currentPassword, newPassword } = req.body;
+      const user = await User.findByPk(req.user.id)
+
+      if (!user) {
+        return res.status(404).json({ error: "User not found" });
+      }
+
+      if (firstname) user.firstname = firstname;
+      if (lastname) user.lastname = lastname;
+      if (email) user.email = email;
+
+      if (currentPassword && newPassword) {
+        const isPasswordValid = await bcrypt.compare(currentPassword, user.password);
+        if (!isPasswordValid) {
+          return res.status(401).json({ error: "Current password is incorrect" });
+        }
+        user.password = await bcrypt.hash(newPassword, 10);
+      }
+
+      await user.save();
+      return res.json({ message: "Profile updated successfully" });
+    } catch (error) {
+      return res.status(500).json({ error: "Error updating profile" });
+    }
+  },
 
 };
  

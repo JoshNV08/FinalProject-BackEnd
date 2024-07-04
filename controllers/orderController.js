@@ -23,13 +23,17 @@ const orderController = {
   },
   store: async (req, res) => {
     try {
-      const {itemslist, status, address} = req.body;
+      const { cartItems, totalAmount, deliveryDetails, paymentDetails } = req.body;
+      const { address, phone, comments } = deliveryDetails;
       const order = await Order.create({
-        itemslist,
+        itemslist: JSON.stringify(cartItems),
         address,
-        status
+        phone,
+        comments,
+        status: "pending",
+        paymentDetails: JSON.stringify(paymentDetails),
       });
-      return res.status(201).json(order);
+      return res.status(201).json({ success: true, order });
     } catch (error) {
       return res.status(500).json({ error: "Error al crear la orden" });
     }
@@ -37,7 +41,7 @@ const orderController = {
   update: async (req, res) => {
     try {
       const { id } = req.params;
-      const {itemslist, status, address} = req.body;
+      const { itemslist, status, address } = req.body;
 
       let order = await Order.findByPk(id);
       if (!order) {
