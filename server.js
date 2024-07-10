@@ -9,10 +9,11 @@ const userRoutes = require("./routes/userRoutes");
 
 app.use(cors());
 app.use(express.json());
-app.use(routes);
+
 app.use("/", routes);
+app.use("/users", userRoutes);
 app.use("/admin", adminRoutes);
-app.use("/", userRoutes);
+
 
 app.listen(port, () =>
   console.log(

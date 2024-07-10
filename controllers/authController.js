@@ -6,9 +6,7 @@ const authController = {
   getToken: async (req, res) => {
     try {
       const { email, password } = req.body;
-
       const user = await User.findOne({ where: { email } });
-
       if (!user) {
         const admin = await Admin.findOne({ where: { email } });
         if (admin) {
@@ -17,7 +15,7 @@ const authController = {
               { sub: admin.id, role: "Admin" },
               process.env.DB_TOKEN_SECRET
             );
-            return res.json({token});
+            return res.json({ token });
           } else {
             return res.status(401).json({ error: "Credenciales inválidas." });
           }
@@ -41,5 +39,4 @@ const authController = {
     }
   },
 };
-
 module.exports = authController;

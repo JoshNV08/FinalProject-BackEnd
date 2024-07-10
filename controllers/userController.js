@@ -13,8 +13,7 @@ const userController = {
 
   show: async (req, res) => {
     try {
-      const { id } = req.params;
-      const user = await User.findByPk(id);
+      const user = await User.findByPk(req.auth.id);
       if (!user) {
         return res.status(404).json({ error: "User not found" });
       }
@@ -26,8 +25,7 @@ const userController = {
 
   store: async (req, res) => {
     try {
-      const { firstname, lastname, email, password, address, phoneNumber } =
-        req.body;
+      const { firstname, lastname, email, password, address, phoneNumber } = req.body;
       const hashedPassword = await bcrypt.hash(password, 10);
 
       await User.create({
@@ -47,10 +45,8 @@ const userController = {
 
   update: async (req, res) => {
     try {
-      const { id } = req.params;
-      const { firstname, lastname, email, password, address, phoneNumber } =
-        req.body;
-      const user = await User.findByPk(id);
+      const { firstname, lastname, email, password, address, phoneNumber } = req.body;
+      const user = await User.findByPk(req.auth.id);
 
       if (!user) {
         return res.status(404).json({ error: "User not found" });
@@ -89,48 +85,6 @@ const userController = {
       return res.status(500).json({ error: "Error deleting user" });
     }
   },
-  getProfile: async (req, res) => {
-    try {
-      const { id } = req.params;
-      const user = await User.findByPk(id);
-      if (!user) {
-        return res.status(404).json({ error: "User not found" });
-      }
-      return res.json(user);
-    } catch (error) {
-      return res.status(500).json({ error: "Error obtaining user" });
-    }
-  },
-
-  updateProfile: async (req, res) => {
-    try {
-      const { id } = req.auth;
-      const { firstname, lastname, email, currentPassword, newPassword, address, phoneNumber } = req.body;
-      const user = await User.findByPk(id);
-
-      if (!user) {
-        return res.status(404).json({ error: "User not found" });
-      }
-
-      if (firstname) user.firstname = firstname;
-      if (lastname) user.lastname = lastname;
-      if (email) user.email = email;
-      if (address) user.address = address;
-      if (phoneNumber) user.phoneNumber = phoneNumber;
-
-      if (currentPassword && newPassword) {
-        const isPasswordValid = await bcrypt.compare(currentPassword, user.password);
-        if (!isPasswordValid) {
-          return res.status(401).json({ error: "Current password is incorrect" });
-        }
-        user.password = await bcrypt.hash(newPassword, 10);
-      }
-
-      await user.save();
-      return res.json({ message: "Profile updated successfully" });
-    } catch (error) {
-      return res.status(500).json({ error: "Error updating profile" });
-    }
-  }};
+};
 
 module.exports = userController;

@@ -5,7 +5,7 @@ class User extends Model {
     User.init(
       {
         id: {
-          type: DataTypes.BIGINT, // Notar que si bien esto en BD se guarda como BIGINT (8 bytes), Sequelize lo retorna como String, ya que JavaScript no lo puede representar.
+          type: DataTypes.BIGINT,
           primaryKey: true,
           autoIncrement: true,
         },
@@ -29,7 +29,6 @@ class User extends Model {
         address: {
           type: DataTypes.STRING,
           allowNull: false,
-          unique: false,
         },
         phoneNumber: {
           type: DataTypes.STRING,
@@ -38,8 +37,8 @@ class User extends Model {
         },
       },
       {
-        sequelize: sequelize,
-        modelName: "user",
+        sequelize,
+        modelName: "User",
       }
     );
     return User;
