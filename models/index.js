@@ -13,6 +13,10 @@ const sequelize = new Sequelize(
   }
 );
 
+if (process.env.DB_CONNECTION === "postgres") {
+  sequelize.dialecModule = require("pg")
+}
+
 const User = require("./User");
 const Product = require("./Product");
 const Order = require("./Order");
